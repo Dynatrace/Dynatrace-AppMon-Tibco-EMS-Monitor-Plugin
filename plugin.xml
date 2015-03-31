@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!-- plugin.xml file written by dynaTrace Client 4.2.0 -->
+<plugin>
+  <extension point="com.dynatrace.diagnostics.pdk.pluginconfig" id="com.dynatrace.plugin.TibcoEmsPlugin" name="TIBCO EMS Monitor">
+    <information>
+      <category value="" />
+      <displayname value="TIBCO EMS Monitor" />
+      <description value="This plugin wll give messaging-related metrics about TIBCO EMS." />
+      <supportlevel value="unsupported" />
+    </information>
+    <configuration>
+      <property key="Port" label="Port" type="string" description="" default="7222" multiline="false" />
+      <property key="Username" label="Username" type="string" description="" default="admin" multiline="false" />
+      <property key="Password" label="Password" type="password" description="" default="" />
+    </configuration>
+  </extension>
+  
+  <extension point="com.dynatrace.diagnostics.pdk.monitor" id="com.dynatrace.plugin.TibcoEmsPlugin.monitor" name="TIBCO EMS Monitor">
+    <plugin configid="com.dynatrace.plugin.TibcoEmsPlugin" class="com.dynatrace.plugin.TibcoEmsPlugin" />
+  </extension>
+  
+  <extension point="com.dynatrace.diagnostics.pdk.monitormetricgroup" id="com.dynatrace.plugin.TibcoEmsPlugin.monitor.metricgroup1" name="Broker Stat">
+    <metricgroup monitorid="com.dynatrace.plugin.TibcoEmsPlugin.monitor">
+      <metric defaultrate="purepath" name="(Broker) - Disk Read Rate" unit="number" description="Rate at which messages are read from disk in bytes per second." />
+      <metric defaultrate="purepath" name="(Broker) - Disk Write Rate" unit="number" description="Rate at which messages are written to disk in bytes per second." />
+      <metric defaultrate="purepath" name="(Broker) - Sync Msg Store Size" unit="number" description="The current size of the synchronous message store." />
+      <metric defaultrate="purepath" name="(Broker) - Async Msg Store Size" unit="number" description="The current size of the asynchronous message store." />
+      <metric defaultrate="purepath" name="(Broker) - Msg Mem Used" unit="number" description="The amount of memory in use to store messages." />
+      <metric defaultrate="purepath" name="(Broker) - Msg Mem Pool Used" unit="number" description=" The amount of memory in use by the message pools." />
+      <metric defaultrate="purepath" name="(Broker) - Max Msg Mem Allowed" unit="number" description="The maximum allowed message memory." />
+      <metric defaultrate="purepath" name="(Broker) - Free Msg Mem" unit="number" description="The amount of free memory to store messages." />
+      <metric defaultrate="purepath" name="(Broker) - Connection Count" unit="number" description="Current number of connections." />
+      <metric defaultrate="purepath" name="(Broker) - Connection Percentage to Max Connections" unit="number" description="Percentage of active connections to max number of connections allocated to server." />
+      <metric defaultrate="purepath" name="(Broker) - Session Count" unit="number" description="Current number of sessions." />
+      <metric defaultrate="purepath" name="(Broker) - Maximum Connections" unit="number" description="Maximum number of connections allowed by server." />
+      <metric defaultrate="purepath" name="(Broker) - Producer Count" unit="number" description="Total number of producers." />
+      <metric defaultrate="purepath" name="(Broker) - Consumer Count" unit="number" description="Total number of consumers." />
+      <metric defaultrate="purepath" name="(Broker) - Durable Count" unit="number" description="Total number of durable subscribers." />
+      <metric defaultrate="purepath" name="(Broker) - Topic Count" unit="number" description="Total number of topics in the server." />
+      <metric defaultrate="purepath" name="(Broker) - Queue Count" unit="number" description="Total number of queues in the server." />
+      <metric defaultrate="purepath" name="(Broker) - Pending Message Count" unit="number" description="Total number of pending messages." />
+      <metric defaultrate="purepath" name="(Broker) - Pending Message Size" unit="number" description="Total size of pending messages in bytes." />
+      <metric defaultrate="purepath" name="(Broker) - Inbound Message Count" unit="number" description="Total number messages received." />
+      <metric defaultrate="purepath" name="(Broker) - Inbound Message Rate" unit="number" description="Messages received per second." />
+      <metric defaultrate="purepath" name="(Broker) - Inbound Bytes Rate" unit="number" description="Bytes received per second." />
+      <metric defaultrate="purepath" name="(Broker) - Outbound Message Count" unit="number" description="Total number of messages sent." />
+      <metric defaultrate="purepath" name="(Broker) - Outbound Message Rate" unit="number" description="Messages sent per second." />
+      <metric defaultrate="purepath" name="(Broker) - Outbound Bytes Rate" unit="number" description="Bytes sent per second." />
+      <metric defaultrate="purepath" name="(Server) - Log File Size Max" unit="number" description="The maximum allowed size of the log file." />
+      <metric defaultrate="purepath" name="(Server) - Log File Size" unit="number" description="The total size of the log file." />
+      <metric defaultrate="purepath" name="(Server) - Log File Percent Used" unit="number" description="Percentage of used log file to max log file size." />		
+    </metricgroup>
+  </extension>
+    
+  <extension point="com.dynatrace.diagnostics.pdk.monitormetricgroup" id="com.dynatrace.plugin.TibcoEmsPlugin.monitor.metricgroup2" name="Destination Stat">
+    <metricgroup monitorid="com.dynatrace.plugin.TibcoEmsPlugin.monitor">
+
+      <metric defaultrate="purepath" name="Consumer Count" unit="number" description="The number of consumers for this destination.">
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="FlowControl MaxBytes" unit="number" description="Volume of pending messages (in bytes) before flow control is enabled for this destination.">
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Pending Message Count" unit="number" description="The total number of pending messages for this destination.">
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Pending Message Size" unit="number" description="The total size (in bytes) for all pending messages for this destination.">
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Inbound Message Count" unit="number" description="Total number messages received.">
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Inbound Message Rate" unit="number" description="Messages received per second.">
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Inbound Bytes Count" unit="number" description="Total bytes received." >
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Inbound Bytes Rate" unit="number" description="Bytes received per second." >      
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Outbound Message Count" unit="number" description="Total number of messages sent." >
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Outbound Message Rate" unit="number" description="Messages sent per second." >
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Outbound Bytes Count" unit="number" description="Total bytes sent." >
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Outbound Bytes Rate" unit="number" description="Bytes sent per second." >
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Queue Receiver Count" unit="number" description="Number of active receivers." >
+		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Queue Delivered Message Count" unit="number" description="Number of messages that have been delivered to consumer applications but have not yet been acknowledged." >
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Queue InTransit Message Count" unit="number" description="Number of messages that have been delivered to the queue owner but have not yet been acknowledged." >
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Topic Subscriber Count" unit="number" description="Number of subscribers for this topic." >
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+
+      <metric defaultrate="purepath" name="Topic Durable Count" unit="number" description="Number of durable subscribers for this topic." >
+      		<property key="Destination" type="string" optional="true"/>
+      </metric>
+   
+    </metricgroup>
+  </extension>
+</plugin>
+

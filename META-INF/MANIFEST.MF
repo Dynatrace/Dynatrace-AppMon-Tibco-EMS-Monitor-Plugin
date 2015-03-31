@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Require-Bundle: com.dynatrace.diagnostics.sdk
+Bundle-Vendor: dynaTrace Community
+Bundle-ClassPath: .,lib/com.dynatrace.diagnostics.sdk.jar,lib/tibjmsad
+ min.jar,lib/jms-2.0.jar,lib/tibjms.jar
+Bundle-Version: 1.0.0
+Bundle-Name: TIBCO EMS Monitor
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.dynatrace.plugin.TibcoEmsPlugin;singleton:=tr
+ ue
